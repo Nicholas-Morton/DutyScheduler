@@ -1,6 +1,8 @@
 class Worker: 
     def __init__(self):
         self.name = ""
+        self.thisWeekGeneral = 0
+        self.thisWeekDetail = 0
         self.generalCounts = {
             'east': 0,
             'gcb': 0,

@@ -1,13 +1,16 @@
+import csv
+
 class Schedule:
-    def __init__(self, name):
+    def __init__(self, name, groups, details): 
         self.name = name
-        self.groups = {
-            'Group 1': [], 
-            'Group 2': [], 
-            'Group 3': [], 
-            'Group 4': [], 
-            'Group 5': []
+        self.groups = {  # Make this groups dict based on a list of group types passed in
+            'east': [], 
+            'gcb': [], 
+            'second': [], 
+            'third': [], 
+            'dinner': []
         }
+        self.details = {} # Make this details dict based on a list of detail types passed in
 
     def print(self):
         print('I\'m a schedule, my name is ' + self.name)
@@ -25,17 +28,22 @@ class Schedule:
             print(csvStr)
 
 
-    def groupsToFormattedCsv(self, writer):
+    def groupsToFormattedCsv(self, filename):
         csvGroups = []
 
         for group in self.groups:
             csvGroups.append(group)
+        with open (filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)  # do with dicts
 
-        for group in csvGroups: 
-            csvStr = group + ','
-            for person in self.groups[group]:
-                csvStr+=person + ','
-            writer.writerow(csvStr)
+            for group in csvGroups: 
+                csvStr = [group]
+                for person in self.groups[group]:
+                    csvStr.append(person)
+                writer.writerow(csvStr)
+                print(csvStr) 
+
     
     def detailsToCsv(self, writer):
         print("not implemented")

@@ -10,6 +10,7 @@ class Worker:
             'third': 0,
             'dinner': 0
         }
+        
         self.detailCounts = {
             'wakings': 0,
             'setup': 0,
@@ -19,37 +20,46 @@ class Worker:
             'bcu': 0,
             'totalDetails': 0
         }
-        self.mondayAvailability = {
-            'wakings': None,
-            'setup': None,
-            'cleanup': None,
-            'phones': None
+
+        self.availability = { 
+            'monday': {}, 
+            'tuesday': {}, 
+            'wednesday': {},
+            'thursday': {}, 
+            'friday': {}
         }
-        self.tuesdayAvailability = {
-            'wakings': None,
-            'setup': None,
-            'cleanup': None,
-            'phones': None
-        }
-        self.wednesdayAvailability = {
-            'wakings': None,
-            'setup': None,
-            'cleanup': None,
-            'phones': None
-        }
-        self.thursdayAvailability = {
-            'wakings': None,
-            'setup': None,
-            'cleanup': None,
-            'phones': None
-        }
-        self.fridayAvailability = {
-            'wakings': None,
-            'setup': None,
-            'cleanup': None,
-            'driver': None
-        }
-        self.isHome = False
+
+        # self.mondayAvailability = {
+        #     'wakings': None,
+        #     'setup': None,
+        #     'cleanup': None,
+        #     'phones': None
+        # }
+        # self.tuesdayAvailability = {
+        #     'wakings': None,
+        #     'setup': None,
+        #     'cleanup': None,
+        #     'phones': None
+        # }
+        # self.wednesdayAvailability = {
+        #     'wakings': None,
+        #     'setup': None,
+        #     'cleanup': None,
+        #     'phones': None
+        # }
+        # self.thursdayAvailability = {
+        #     'wakings': None,
+        #     'setup': None,
+        #     'cleanup': None,
+        #     'phones': None
+        # }
+        # self.fridayAvailability = {
+        #     'wakings': None,
+        #     'setup': None,
+        #     'cleanup': None,
+        #     'driver': None
+        # }
+        self.isHome = True
 
     def print(self):
         print('I\'m a worker, my name is ' + self.name)

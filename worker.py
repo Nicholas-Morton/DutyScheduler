@@ -3,15 +3,12 @@ class Worker:
         self.name = ""
         self.thisWeekGeneral = 0
         self.thisWeekDetail = 0
-        self.generalCounts = {
+        self.counts = {
             'east': 0,
             'gcb': 0,
             'second': 0,
             'third': 0,
-            'dinner': 0
-        }
-        
-        self.detailCounts = {
+            'dinner': 0,
             'wakings': 0,
             'setup': 0,
             'cleanup': 0,
@@ -20,7 +17,7 @@ class Worker:
             'bcu': 0,
             'totalDetails': 0
         }
-
+        
         self.availability = { 
             'monday': {}, 
             'tuesday': {}, 

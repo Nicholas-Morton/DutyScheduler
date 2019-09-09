@@ -1,9 +1,9 @@
-Name,East Side,GCB,2nd,3rd,Dinner,Wakings,Lunch Setup,Lunch Cleanup,Phones,Sober Driver,BCU,Total Details
-Worker1,0,0,0,0,0,0,0,0,0,0,0,0
-Worker2,0,0,0,0,0,0,0,0,0,0,0,0
+Name,East Side,GCB,2nd,3rd,Dinner,wakings,setup,cleanup,phones,Sober Driver,BCU,Total Details
+Worker1,0,2,0,0,0,0,0,0,0,0,0,0
+Worker2,0,0,0,0,0,0,0,0,7,0,0,0
 Worker3,0,0,0,0,0,0,0,0,0,0,0,0
 Worker4,0,0,0,0,0,0,0,0,0,0,0,0
-Worker5,0,0,0,0,0,0,0,0,0,0,0,0
+Worker5,0,0,0,0,0,0,0,0,9,0,0,0
 Worker6,0,0,0,0,0,0,0,0,0,0,0,0
 Worker7,0,0,0,0,0,0,0,0,0,0,0,0
 Worker8,0,0,0,0,0,0,0,0,0,0,0,0

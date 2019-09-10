@@ -1,84 +1,46 @@
 import csv
 
 class Schedule:
-    def __init__(self, name, groups, details): 
+    def __init__(self, name): 
         self.name = name
-        self.groups = {  # Make this groups dict based on a list of group types passed in
-            'east': [], 
-            'gcb': [], 
-            'second': [], 
-            'third': [], 
-            'dinner': []
-        }
-        self.details = {} # Make this details dict based on a list of detail types passed in
+        self.groups = {} 
+        self.details = {} 
 
-    def print(self):
-        print('I\'m a schedule, my name is ' + self.name)
+    def addGroup(self, task, group):
+        self.groups.update( {task: group} )
+        
+    def addDetail(self, task, group): 
+        self.details.update( {task: group} )
 
-    def printGroupsCsv(self): 
+    def groupsToFormattedCsv(self):
         csvGroups = []
-
-        for group in self.groups:
-            csvGroups.append(group)
-
-        for group in csvGroups: 
-            csvStr = group + ','
-            for person in self.groups[group]:
-                csvStr+=person + ','
-            print(csvStr)
-
-
-    def groupsToFormattedCsv(self, filename):
-        csvGroups = []
-
-        for group in self.groups:
-            csvGroups.append(group)
-        with open (filename, 'w', newline='') as csvfile:
+        csvDetails = []
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        for task in self.groups:
+            csvGroups.append(task)
+        
+        for task in self.details:
+            csvDetails.append(task)
+            
+        with open (self.name + '.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)  # do with dicts
 
-            for group in csvGroups: 
-                csvStr = [group]
-                for person in self.groups[group]:
+            writer.writerow(['Generals'])
+
+            for task in csvGroups: 
+                csvStr = ['', task]
+                for person in self.groups[task]:
                     csvStr.append(person)
                 writer.writerow(csvStr)
-                print(csvStr) 
+            writer.writerow(['Details'])
 
-    
-    def detailsToCsv(self, writer):
-        print("not implemented")
+            for day in days:
+                writer.writerow([day])
+                for task in csvDetails:
+                    csvStr = ['', task]
+                    for person in self.details[task][day]:
+                        csvStr.append(person)
+                    writer.writerow(csvStr)
 
-    def printScheduleOutline(self):
-        print("Groups,")
-        print(",Group1,")
-        print(",Group2,")
-        print(",Group3,")
-        print(",Group4,")
-        print(",Group5,")
-        print("Details,")
-        print("Monday,Wakings,")
-        print(",Lunch Setup,")
-        print(",Lunch Cleanup,")
-        print(",Phones,")
-        print("Tuesday,Wakings,")
-        print(",Lunch Setup,")
-        print(",Lunch Cleanup,")
-        print(",Phones,")
-        print("Wednesday,Wakings,")
-        print(",Lunch Setup,")
-        print(",Lunch Cleanup,")
-        print(",Phones,")
-        print("Thursday,Wakings,")
-        print(",Lunch Setup,")
-        print(",Lunch Cleanup,")
-        print(",Phones,")
-        print("Friday,Wakings,")
-        print(",Lunch Setup,")
-        print(",Lunch Cleanup,")
-        print(",Sober D,")
-        print("Saturday,BCU,")
-        print(",Wakings,")
-        print(",Sober D,")
-        print("Sunday,BCU")
-        print("Wakings")
 

@@ -3,6 +3,7 @@ class Worker:
         self.name = ""
         self.thisWeekGeneral = 0
         self.thisWeekDetail = 0
+        self.jobs = []
         self.counts = {
             'east': 0,
             'gcb': 0,
@@ -19,44 +20,11 @@ class Worker:
         }
         
         self.availability = { 
-            'monday': {}, 
-            'tuesday': {}, 
-            'wednesday': {},
-            'thursday': {}, 
-            'friday': {}
+            'Monday': {}, 
+            'Tuesday': {}, 
+            'Wednesday': {},
+            'Thursday': {}, 
+            'Friday': {}
         }
 
-        # self.mondayAvailability = {
-        #     'wakings': None,
-        #     'setup': None,
-        #     'cleanup': None,
-        #     'phones': None
-        # }
-        # self.tuesdayAvailability = {
-        #     'wakings': None,
-        #     'setup': None,
-        #     'cleanup': None,
-        #     'phones': None
-        # }
-        # self.wednesdayAvailability = {
-        #     'wakings': None,
-        #     'setup': None,
-        #     'cleanup': None,
-        #     'phones': None
-        # }
-        # self.thursdayAvailability = {
-        #     'wakings': None,
-        #     'setup': None,
-        #     'cleanup': None,
-        #     'phones': None
-        # }
-        # self.fridayAvailability = {
-        #     'wakings': None,
-        #     'setup': None,
-        #     'cleanup': None,
-        #     'driver': None
-        # }
         self.isHome = True
-
-    def print(self):
-        print('I\'m a worker, my name is ' + self.name)

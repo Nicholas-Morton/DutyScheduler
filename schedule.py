@@ -42,5 +42,4 @@ class Schedule:
                     for person in self.details[task][day]:
                         csvStr.append(person)
                     writer.writerow(csvStr)
-
-
+                    

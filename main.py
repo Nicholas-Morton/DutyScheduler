@@ -75,11 +75,22 @@ def getDetailGroups(workerDict, task, size):
         copyWorkerDict = workerDict.copy()
         while len(group) < size and len(copyWorkerDict) > 0:
             key = random.choice(list(copyWorkerDict.keys()))
-            if copyWorkerDict[key].thisWeekDetail < 4 and copyWorkerDict[key].availability[day][task] == ('yes' or 'maybe') and copyWorkerDict[key].jobs.count(task) <= 3:
-                copyWorkerDict[key].thisWeekDetail += 1  # Should also update the spreadsheet
-                group.append(key)
-                copyWorkerDict[key].jobs.append(task)
-                del copyWorkerDict[key]
+            if copyWorkerDict[key].thisWeekDetail < 4 and copyWorkerDict[key].availability[day][task] == ('yes' or 'maybe') and copyWorkerDict[key].jobs.count(task) <= 3 and copyWorkerDict[key].daysWorking.count(day) == 0:
+                if task != 'wakings':
+                    copyWorkerDict[key].thisWeekDetail += 1  # Should also update the spreadsheet
+                    group.append(key)
+                    copyWorkerDict[key].jobs.append(task)
+                    copyWorkerDict[key].daysWorking.append(day)
+                    del copyWorkerDict[key]
+                
+                else:
+                    if copyWorkerDict[key].jobs.count('wakings') == 0:
+                        copyWorkerDict[key].thisWeekDetail += 1  # Should also update the spreadsheet
+                        group.append(key)
+                        copyWorkerDict[key].jobs.append(task)
+                        copyWorkerDict[key].daysWorking.append(day)
+                        del copyWorkerDict[key]
+
 
             else: 
                 del copyWorkerDict[key]  # Deletes entries to avoid infinate loop if size condition can't be met
@@ -106,11 +117,12 @@ def main():
 
     newSchedule = Schedule('output')
 
+    newSchedule.addGroup('dinner', getGeneralGroup(workerDict, 'dinner', 5))
     newSchedule.addGroup('east', getGeneralGroup(workerDict, 'east', 3))
     newSchedule.addGroup('gcb', getGeneralGroup(workerDict, 'gcb', 4))
     newSchedule.addGroup('second', getGeneralGroup(workerDict, 'second', 4))
     newSchedule.addGroup('third', getGeneralGroup(workerDict, 'third', 4))
-    newSchedule.addGroup('dinner', getGeneralGroup(workerDict, 'dinner', 5))
+
 
     newSchedule.addDetail('wakings', getDetailGroups(workerDict, 'wakings', 2))
     newSchedule.addDetail('setup', getDetailGroups(workerDict, 'setup', 2))

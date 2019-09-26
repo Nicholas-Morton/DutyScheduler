@@ -27,4 +27,8 @@ class Worker:
             'Friday': {}
         }
 
+        self.daysWorking = []
+
         self.isHome = True
+
+

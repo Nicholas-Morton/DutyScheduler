@@ -111,7 +111,7 @@ def main():
             'phones',
             'driver',
             'bcu']  # Maybe make a new csv file with all of the jobs and the number of people needed
-    workerDict = getWorkers('General_Detail Count.csv', jobs)
+    workerDict = getWorkers('Example General_Detail Count.csv', jobs)
 
     getDetailAvailability(workerDict)
 
